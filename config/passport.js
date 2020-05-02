@@ -25,12 +25,10 @@ passport.use(new localStrategy(
 ))
 
 passport.serializeUser(function(user, done){
-    console.log("USER " + user)
     done(null, user.id);
 })
 
 passport.deserializeUser(function(id, done){
-    console.log("ID " + id)
     Employee.findById(id, function (err, employee) {
         done(err, employee);
     });
@@ -39,10 +37,9 @@ passport.deserializeUser(function(id, done){
 // SET USER IN LOCALS
 passport.setEmployee = (req, res, next)=>{
     if(req.isAuthenticated()){
-        console.log("USER " + req.user)
-        console.log("EMPLOYEE " + req.employee)
         let employee = {
             _id: req.user._id,
+            name: req.user.name,
             email: req.user.email
         }
         res.locals.employee = employee;

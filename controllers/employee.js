@@ -2,10 +2,16 @@ const Employee = require('./../models/Employee');
 const passport = require('passport');
 
 module.exports.signUp = (req, res)=>{
+    if(req.isAuthenticated()){
+        return res.redirect('/')
+    }
     res.render('sign-up', {title: 'Sign Up'})
 }
 
 module.exports.signIn = (req, res)=>{
+    if(req.isAuthenticated()){
+        return res.redirect('/')
+    }
     res.render('sign-in', {title: 'Sign In'})
 }
 

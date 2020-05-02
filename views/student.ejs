@@ -1,0 +1,92 @@
+<script type="text/javascript" src="/js/student.js"></script>
+<link rel='stylesheet' type='text/css' href='/css/student.css'>
+
+<div class="studentDiv">
+    <div class="studentHeader">
+        <button type="button" class="addStudentBtn" onclick="showModal()">&#10010; Add New Student</button>
+    </div>
+
+    <% if(locals.studentFetchingError){ %>
+    <div class="studentFetchingError">
+        <span><%= locals.studentFetchingError %></span>
+    </div>
+    <% }else { %>
+    <% if(locals.students){ %>
+    <div style="font-size: 1.2rem; font-weight: 600;">
+        <span>Total Students : <%= students.length %></span>
+    </div>
+    <div class="listOfStudents">
+        <% for(let i=0, batchNumber = 1; i<students.length; i++, batchNumber++){ %>
+        <% if(i == 0){ %>
+        <div class="batchHeader">
+            <span><%= students[i].batch %></span>
+        </div>
+        <% }else{ %>
+        <% if(students[i].batch != students[i-1].batch){ %>
+        <% batchNumber = 1 %>
+        <div class="batchHeader">
+            <span><%= students[i].batch %></span>
+        </div>
+        <% } %>
+        <% } %>
+        <div class="eachStudent">
+            <div class="number">
+                <span><%= (batchNumber) %>.</span>
+            </div>
+            <div class="content">
+                <h3><%= students[i].name %></h3>
+                <p>Batch : <%= students[i].batch %></p>
+                <p>College : <%= students[i].college %></p>
+                <p>DSA Score : <%= students[i].course.DSA  %></p>
+                <p>WebD Score : <%= students[i].course.WebD %></p>
+                <p>React Score : <%= students[i].course.React %></p>
+                <div class="status" style="background: <%= (students[i].status == "Placed") ? "#24c224" : "#ce4646" %>">
+                    <p><%= students[i].status %></p>
+                </div>
+
+            </div>
+
+        </div>
+        <% } %>
+    </div>
+    <% } %>
+    <% } %>
+
+    <div class="add-student-div">
+        <div class="header">
+            <span>Add Student</span>
+            <span class="close" onclick="hideModal()">&#10006;</span>
+        </div>
+
+        <div class="body">
+            <!-- ERROR AND SUCCESS NOTIFICATION -->
+            <span class="error"></span>
+            <span class="success"></span>
+
+            <!-- ADD STUDNET FORM -->
+            <form class="add-student-form" method="POST" action="/students/add">
+                <input type="text" id="name" name="name" placeholder="Enter Name..." required />
+
+                <input type="text" id="batch" name="batch" placeholder="Enter Batch Name... Example : Oct-19, Jan-20" required />
+
+                <input type="text" id="college" name="college" placeholder="Enter College Name..." required />
+
+                <div>Course Details : </div>
+
+                <input type="number" id="DSA" name="DSA" placeholder="Enter DSA Score..." min="0" max="100" required />
+
+                <input type="number" id="WebD" name="WebD" placeholder="Enter Web Development Score..." min="0" max="100" required />
+
+                <input type="number" id="React" name="React" placeholder="Enter React Score..." min="0" max="100" required />
+
+                <select id="status" name="status" required>
+                    <option value="" selected>Select Status</option>
+                    <option value="Placed">Placed</option>
+                    <option value="Not placed">Not Placed</option>
+                </select>
+
+                <button type="submit" class="addStudentBtn">Add Student</button>
+            </form>
+        </div>
+    </div>
+</div>

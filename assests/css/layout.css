@@ -5,20 +5,26 @@
     box-sizing: border-box;
 }
 
+body{
+    overflow-x: hidden;
+}
+
 .mainDiv{    
     min-height: 100vh;
     height: fit-content;
     width: 100vw;
-    background: grey;
+    background: #5c9096;
 }
 
 .mainDiv .nav{
+    position: fixed;
     height: 70px;
     width: 100%;
     background: black;
     display: flex;
     flex-direction: row;
     padding: 10px;
+    z-index: 1000;
 }
 
 .mainDiv .nav .leftSide{
@@ -48,5 +54,5 @@
 }
 
 .bodyDiv{
-    padding: 20px;
+    padding: 90px 20px 20px 20px;
 }

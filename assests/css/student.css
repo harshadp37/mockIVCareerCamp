@@ -1,0 +1,243 @@
+.studentDiv{
+    position: relative;
+}
+
+.studentHeader{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+}
+
+.studentHeader .addStudentBtn{
+    padding: 8px 10px;
+    border: none;
+    outline: none;
+    margin-bottom: 15px;
+    font-size: 1.3rem;
+    border-radius: 5px;
+    cursor: pointer;    
+    background: #affe0a;;
+    color: black;
+    cursor: pointer;
+}
+
+.studentFetchingError{
+    width: 100%;
+    color: #910d0d;
+    text-align: center;
+    font-size: 1rem;
+    padding-top: 5px;
+    font-weight: 600;
+}
+
+.listOfStudents{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.listOfStudents .batchHeader{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    background: #f1b970;
+    text-transform: uppercase;
+    margin: 20px 0 0 0;
+    padding: 10px 0;
+    font-size: 1.3rem;
+}
+
+.listOfStudents .eachStudent{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    padding: 20px 0 20px 20px;
+    background: #dcc496;
+    margin: 0 0 1% 0;
+    position: relative;
+    overflow: hidden;
+}
+
+.listOfStudents .eachStudent .number{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin: 0 10px 0 0;
+    font-size: 1.2rem;
+    font-weight: 700;
+}
+
+.listOfStudents .eachStudent .content{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.listOfStudents .eachStudent .content h3{
+    margin: 0 0 10px 0;
+    font-size: 1.2rem;
+}
+
+.listOfStudents .eachStudent .content p{
+    margin: 0 0 5px 0;
+    font-size: 0.95rem;
+}
+
+.listOfStudents .eachStudent .content .status{
+    width: 170px;
+    height: 170px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    position: absolute;
+    top: 0;
+    right: 0;
+    transform: rotate(45deg);
+    transform-origin: 145% 90%;
+    background: #24c224;
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+.add-student-div{
+    width: 50%;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    display: none;
+}
+
+.add-student-div .header{
+    width: 100%;
+    font-size: 1.5rem;
+    text-align: center;
+    padding: 10px 0;
+    background: #1a1b27;
+    color: white;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    position: relative;
+}
+
+.add-student-div .header .close{
+    font-size: 1.2rem;
+    color: red;
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    cursor: pointer;
+}
+
+.add-student-div .header .close:hover{
+    color: #ff5050;
+}
+
+.add-student-div .body{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-size: 1.2rem;
+    background: #645fa0;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+.add-student-div .body .error{
+    width: 50%;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    display: none;
+}
+
+.add-student-div .body .success{
+    width: 80%;
+    color: lime;
+    font-size: 1rem;
+    padding-top: 5px;
+    font-weight: 600;
+}
+
+.add-student-div .body form{
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 35px 0;
+    text-align: center;
+    font-size: 1.2rem;
+}
+
+.add-student-div .body form input, .add-student-div .body form select{
+    width: 100%;
+    padding: 8px 10px;
+    border: none;
+    outline: none;
+    margin: 10px;
+    margin-bottom: 15px;
+    font-size: 1.1rem;
+    background: inherit;
+    border-bottom: 2px solid black;
+    transition: all 0.5s;
+}
+
+.add-student-div .body form input::placeholder{
+    font-size: 0.9rem;
+    color: black;
+}
+
+.add-student-div .body form input:focus{
+    border-bottom: 2px solid orange;
+    color: white;
+}
+
+.add-student-div .body form .addStudentBtn{
+    padding: 8px 10px;
+    border: none;
+    outline: none;
+    margin-bottom: 15px;
+    font-size: 1.3rem;
+    border-radius: 5px;
+    cursor: pointer;    
+    background: #affe0a;;
+    color: black;
+    cursor: pointer;
+}
+
+.add-student-div .body form .addStudentBtn:hover{
+    background: #83b615;
+    color: black;
+}
+
+@media(min-width: 800px){
+    .listOfStudents .eachStudent{
+        width: 48%;
+        margin: 0 1% 1% 0;
+    }
+}
+
+@media(min-width: 1100px){
+    .listOfStudents .eachStudent{
+        width: 32%;
+        margin: 0 1% 1% 0;
+    }
+}
+
+@media(min-width: 1400px){
+    .listOfStudents .eachStudent{
+        width: 24%;
+        margin: 0 1% 1% 0;
+    }
+}

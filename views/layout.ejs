@@ -13,8 +13,10 @@
             <% if(locals.employee){ %>
                 <div class="leftSide">
                     <a type="button" href="/">HOME</a>
+                    <a type="button" href="/students">Student</a>
                 </div>
                 <div class="rightSide">
+                    <a type="button"><%= locals.employee.name %></a>
                     <a type="button" href="/employee/sign-out">Sign Out</a>
                 </div>
             <% }else{ %>
