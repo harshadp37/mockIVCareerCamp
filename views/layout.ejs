@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title><%= locals.title %></title>
+    <link rel='stylesheet' type='text/css' media='screen' href='/css/layout.css'>
+    <%- style %>
+</head>
+<body>
+    
+    <div class="mainDiv">
+
+        <div class="nav">
+            <% if(locals.employee){ %>
+                <div class="leftSide">
+                    <a type="button" href="/">HOME</a>
+                </div>
+                <div class="rightSide">
+                    <a type="button" href="/employee/sign-out">Sign Out</a>
+                </div>
+            <% }else{ %>
+                <div class="leftSide">
+                    <a type="button" href="/">HOME</a>
+                </div>
+                <div class="rightSide">
+                    <a type="button" href="/employee/sign-in">Sign In</a>
+                    <a type="button" href="/employee/sign-up">Sign Up</a>
+                </div>
+            <% } %>
+        </div>
+
+        <div class="bodyDiv">
+            <%- body %>
+        </div>
+        
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src='/js/script.js'></script>
+    <%- script %>
+</body>
+</html> 

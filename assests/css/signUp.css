@@ -1,0 +1,115 @@
+.signUpDiv{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* SIGN UP MODAL */
+.signUpModal{
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    border-radius: 10px;
+}
+
+/* SIGN UP MODAL HEADER */
+.signUpModal .header{
+    width: 100%;
+    font-size: 1.5rem;
+    text-align: center;
+    padding: 10px 0;
+    background: #1a1b27;
+    color: white;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+/* SIGN UP MODAL BODY */
+.signUpModal .body{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-size: 1.2rem;
+    background: #645fa0;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+.signUpModal .body .error{
+    width: 80%;
+    color: #910d0d;
+    font-size: 1rem;
+    padding-top: 5px;
+    font-weight: 600;
+}
+
+.signUpModal .body .success{
+    width: 80%;
+    color: lime;
+    font-size: 1rem;
+    padding-top: 5px;
+    font-weight: 600;
+}
+
+/* SIGN UP FORM */
+.signUpModal .body form{
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 35px 0;
+    text-align: center;
+    font-size: 1.2rem;
+}
+
+.signUpModal .body label, .signUpModal .body input{
+    width: 100%;
+}
+
+.signUpModal .body input{
+    padding: 8px 10px;
+    border: none;
+    outline: none;
+    margin: 10px;
+    margin-bottom: 15px;
+    font-size: 1.1rem;
+    background: inherit;
+    border-bottom: 2px solid black;
+    transition: all 0.5s;
+}
+
+.signUpModal .body input::placeholder{
+    font-size: 0.9rem;
+    color: black;
+}
+
+.signUpModal .body input:focus{
+    border-bottom: 2px solid white;
+    color: white;
+}
+
+.signUpModal .body button{
+    width: 50%;
+    padding: 8px 10px;
+    border: none;
+    outline: none;
+    margin: 10px;
+    margin-bottom: 15px;
+    font-size: 1.3rem;
+    border-radius: 5px;
+    cursor: pointer;    
+    background: #affe0a;;
+    color: black;
+    cursor: pointer;
+}
+
+.signUpModal .body button:hover{ 
+    background: #83b615;
+    color: black;
+}

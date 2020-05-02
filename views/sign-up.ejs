@@ -1,0 +1,31 @@
+
+<link rel='stylesheet' type='text/css' href='/css/signUp.css'>
+
+<div class="signUpDiv">
+
+    <div class="signUpModal">
+
+        <div class="header">
+            <span>Sign Up</span>
+        </div>
+
+        <div class="body">
+            <!-- ERROR AND SUCCESS NOTIFICATION -->
+            <span class="error"></span>
+            <span class="success"></span>
+            
+            <!-- SIGN UP FORM -->
+            <form class="sign-up-form" method="POST" action="/user/sign-up">
+                <input type="text" id="name" name="name" placeholder="Enter Name..." required/>
+
+                <input type="email" id="email" name="email" placeholder="Enter Email..." />
+
+                <input type="password" id="password" name="password" placeholder="Enter Password..." />
+
+                <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Confirm Password..." />
+                
+                <button type="submit">Sign Up</button>
+            </form>
+        </div>
+    </div>
+</div>
