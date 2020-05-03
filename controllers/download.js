@@ -2,6 +2,7 @@ const Interview = require('./../models/Interview');
 const Student = require('./../models/Student');
 const Result = require('../models/Result');
 
+// RETURN DOWNLOAD TEMPLATE
 module.exports.getDownloadPage = async (req, res) => {
     if (!req.isAuthenticated()) {
         return res.redirect('/')
@@ -9,6 +10,7 @@ module.exports.getDownloadPage = async (req, res) => {
     return res.render('download', { title: 'Download' });
 }
 
+// RETURN DOWNLOAD DATA
 module.exports.getData = async (req, res) => {
     try {
         if (!req.isAuthenticated()) {

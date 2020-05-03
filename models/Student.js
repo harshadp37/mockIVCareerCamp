@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
 
-// EMPLOYEE SCHEMA
+// STUDENT SCHEMA
 const studentSchema = new mongoose.Schema({
     name: {
         type: String,

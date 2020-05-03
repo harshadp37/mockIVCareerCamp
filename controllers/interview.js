@@ -2,6 +2,7 @@ const Interview = require('./../models/Interview');
 const Student = require('./../models/Student');
 const Result = require('../models/Result');
 
+// RETURN ALL INTERVIEWS
 module.exports.getAllInterviews = async (req, res)=>{
     try {
         if(!req.isAuthenticated()){
@@ -31,23 +32,23 @@ module.exports.getAllInterviews = async (req, res)=>{
             // Use toUpperCase() to ignore character casing
             let comparison = 0;
             if (a.date > b.date) {
-              comparison = 1;
+                comparison = 1;
             } else if (a.date < b.date) {
-              comparison = -1;
+                comparison = -1;
             }
             return comparison;
-          }
+        }
 
-          function compare2(a, b) {
-              // Use toUpperCase() to ignore character casing
-              let comparison = 0;
-              if (a.date > b.date) {
+        function compare2(a, b) {
+            // Use toUpperCase() to ignore character casing
+            let comparison = 0;
+            if (a.date > b.date) {
                 comparison = -1;
-              } else if (a.date < b.date) {
+            } else if (a.date < b.date) {
                 comparison = 1;
-              }
-              return comparison;
             }
+            return comparison;
+        }
 
         return res.render('interview', {title: 'Interview', upcomingInterviews: upcomingInterviews, pastInterviews: pastInterviews})
     } catch (e) {
@@ -56,6 +57,7 @@ module.exports.getAllInterviews = async (req, res)=>{
     }
 }
 
+// ADD NEW INTERVIEW
 module.exports.addNewInterview = async (req, res)=>{
     try {
         if(!req.isAuthenticated()){
@@ -83,6 +85,7 @@ module.exports.addNewInterview = async (req, res)=>{
     }
 }
 
+// RETURN ALLOCATED STUDENTS OF AN INTERVIEW
 module.exports.getAllocatedStudents = async (req, res)=>{
     try {
         if(!req.isAuthenticated()){
@@ -105,6 +108,7 @@ module.exports.getAllocatedStudents = async (req, res)=>{
     }
 }
 
+// RETURN NOT ALLOCATED STUDENTS OF AN INTERVIEW
 module.exports.getRemainingStudents = async (req, res)=>{
     try {
         if(!req.isAuthenticated()){
@@ -129,6 +133,7 @@ module.exports.getRemainingStudents = async (req, res)=>{
     }
 }
 
+// ALLOCATE STUDENT FOR AN INTERVIEW
 module.exports.addStudentForAnInterview = async (req, res)=>{
     try {
         if(!req.body.interviewID || !req.body.studentID){

@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-// EMPLOYEE SCHEMA
+// RESULT SCHEMA
 const resultSchema = new mongoose.Schema({
     interview: {
         type: mongoose.Schema.Types.ObjectId,

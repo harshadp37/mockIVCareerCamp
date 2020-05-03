@@ -53,11 +53,6 @@ app.use(passport.setEmployee);
 // INDEX ROUTE
 app.use('/', require('./routes/index'));
 
-// RENDER ERROR PAGE IF ROUTE IS NOT FOUND
-app.use((req, res)=>{
-    res.send('ERROR')
-})
-
 // START SERVER
 app.listen(PORT, ()=>{
     console.log("Server Running on PORT : " + PORT);

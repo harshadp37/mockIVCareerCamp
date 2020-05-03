@@ -7,6 +7,72 @@ function hideModal(){
     $('.modal').css('display', 'none');
 }
 
+
+// SHOW ALREADY STUDENTS IN TABLE
+function showStudentsTable(students, interviewID){
+    let table = $('<table></table>')
+    for(let i=0; i<students.length; i++){
+        let tr = $('<tr></tr>');
+        let td = $('<td></td>').text(students[i].name);
+        tr.append(td);
+        td = $('<td></td>').text(students[i].batch);
+        tr.append(td);
+        td = $('<td></td>').text(students[i].college);
+        tr.append(td);
+        table.append(tr);
+    }
+    
+    $('.interview-show-students-div .body').append(table)
+}
+
+// SHOW INTERVIEW STUDENTS MODAL TO SHOW ALLOCATED STUDENTS
+function showInterviewStudentModal(interviewID, company){
+    $('.modal').css('display', 'none');
+    $('.interview-show-students-div .error').text("");
+    $('.interview-show-students-div .company').text("Company Name : " + company);
+    $('.interview-show-students-div .body table').remove();
+    $('.interview-show-students-div').css('display', 'block');
+    // REQUEST TO "/interviews/:id/students"
+    $.ajax({
+        method: 'GET',
+        url: '/interviews/' + interviewID + '/students',
+        success: (result)=>{
+            if(result.success){
+                console.log(result.students)
+                showStudentsTable(result.students, interviewID);
+                $("body").css('cursor', 'default')
+            }else{
+                $("body").css('cursor', 'default')
+                $('.interview-show-students-div .error').text(result.message)
+            }
+        },
+        error: (error)=>{
+            $("body").css('cursor', 'default')
+            console.log(error)
+        }
+    })
+}
+
+// SHOW STUDENTS IN TABLE TO ALLOCATE THEM FOR AN INTERVIEW
+function showAddStudentsTable(students, interviewID){
+    let table = $('<table></table>')
+    for(let i=0; i<students.length; i++){
+        let tr = $('<tr></tr>');
+        let td = $('<td></td>').text(students[i].name);
+        tr.append(td);
+        td = $('<td></td>').text(students[i].batch);
+        tr.append(td);
+        let button = $('<button></button>').text('Add');
+        td = $('<td></td>').append(button);
+        tr.append(td);
+        $(button).click({interviewID: interviewID, studentID: students[i]._id}, addStudentsForAnInterview);
+        table.append(tr);
+    }
+    
+    $('.interview-add-students-div .body').append(table)
+}
+
+// SHOW INTERVIEW STUDENTS MODAL TO ALLOCATE THEM FOR AN INTERVIEW 
 function showAddInterviewStudentModal(interviewID, company){
     $('.modal').css('display', 'none');
     $('.interview-add-students-div .error').text("");
@@ -34,22 +100,7 @@ function showAddInterviewStudentModal(interviewID, company){
     })
 }
 
-function showStudentsTable(students, interviewID){
-    let table = $('<table></table>')
-    for(let i=0; i<students.length; i++){
-        let tr = $('<tr></tr>');
-        let td = $('<td></td>').text(students[i].name);
-        tr.append(td);
-        td = $('<td></td>').text(students[i].batch);
-        tr.append(td);
-        td = $('<td></td>').text(students[i].college);
-        tr.append(td);
-        table.append(tr);
-    }
-    
-    $('.interview-show-students-div .body').append(table)
-}
-
+// ADD STUDENT TO AN INTERVIEW
 function addStudentsForAnInterview(e){
     e.preventDefault();
     console.log(e.data)
@@ -79,51 +130,7 @@ function addStudentsForAnInterview(e){
     })
 }
 
-function showAddStudentsTable(students, interviewID){
-    let table = $('<table></table>')
-    for(let i=0; i<students.length; i++){
-        let tr = $('<tr></tr>');
-        let td = $('<td></td>').text(students[i].name);
-        tr.append(td);
-        td = $('<td></td>').text(students[i].batch);
-        tr.append(td);
-        let button = $('<button></button>').text('Add');
-        td = $('<td></td>').append(button);
-        tr.append(td);
-        $(button).click({interviewID: interviewID, studentID: students[i]._id}, addStudentsForAnInterview);
-        table.append(tr);
-    }
-    
-    $('.interview-add-students-div .body').append(table)
-}
-
-function showInterviewStudentModal(interviewID, company){
-    $('.modal').css('display', 'none');
-    $('.interview-show-students-div .error').text("");
-    $('.interview-show-students-div .company').text("Company Name : " + company);
-    $('.interview-show-students-div .body table').remove();
-    $('.interview-show-students-div').css('display', 'block');
-    // REQUEST TO "/interviews/:id/students"
-    $.ajax({
-        method: 'GET',
-        url: '/interviews/' + interviewID + '/students',
-        success: (result)=>{
-            if(result.success){
-                console.log(result.students)
-                showStudentsTable(result.students, interviewID);
-                $("body").css('cursor', 'default')
-            }else{
-                $("body").css('cursor', 'default')
-                $('.interview-show-students-div .error').text(result.message)
-            }
-        },
-        error: (error)=>{
-            $("body").css('cursor', 'default')
-            console.log(error)
-        }
-    })
-}
-
+// ADD RESULT STATUS OF AN INTERVIEW
 function addResultStatus(e){
     e.preventDefault();
     console.log("ADD");
@@ -156,6 +163,8 @@ function addResultStatus(e){
         }
     }) 
 }
+
+// UPDATE RESULT STATUS OF AN INTERVIEW
 function updateResultStatus(e){
     e.preventDefault();
     console.log(e.data)
@@ -186,6 +195,7 @@ function updateResultStatus(e){
     }) 
 }
 
+// SHOW STUDENTS DEATILS IN TABLE TO ADD RESULT
 function showStudentsResultsTable(students, interviewID){
     let table = $('<table></table>')
     for(let i=0; i<students.length; i++){
@@ -245,6 +255,7 @@ function showStudentsResultsTable(students, interviewID){
     $('.interview-mark-result-div .body').append(table)
 }
 
+// SHOW INTERVIEW RESULT MODAL
 function showInterviewResultModal(interviewID, company){
     $('.modal').css('display', 'none');
     $('.interview-mark-result-div .error').text("");

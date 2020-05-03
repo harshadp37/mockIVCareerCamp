@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-// EMPLOYEE SCHEMA
+// INTERVIEW SCHEMA
 const interviewSchema = new mongoose.Schema({
     date: {
         type: Date,

@@ -1,6 +1,7 @@
 const Employee = require('./../models/Employee');
 const passport = require('passport');
 
+// SIGN UP TEMPLATE
 module.exports.signUp = (req, res)=>{
     if(req.isAuthenticated()){
         return res.redirect('/')
@@ -8,6 +9,7 @@ module.exports.signUp = (req, res)=>{
     res.render('sign-up', {title: 'Sign Up'})
 }
 
+// SIGN IN TEMPLATE
 module.exports.signIn = (req, res)=>{
     if(req.isAuthenticated()){
         return res.redirect('/')
@@ -15,11 +17,13 @@ module.exports.signIn = (req, res)=>{
     res.render('sign-in', {title: 'Sign In'})
 }
 
+// SIGN OUT
 module.exports.signOut = (req, res)=>{
     req.logout();
     res.redirect('/')
 }
 
+// REGITER FOR AN EMPLOYEE
 module.exports.register = async (req, res)=>{
     try {
         // IF EMPLOYEE IS SIGN IN ALREADY THEN REDIRECT TO HOME
@@ -56,6 +60,7 @@ module.exports.register = async (req, res)=>{
     }
 }
 
+// LOGIN FOR AN EMPLOYEE
 module.exports.login = (req, res, next)=>{
     // IF EMPLOYEE IS SIGN IN ALREADY THEN REDIRECT TO HOME
     if(req.isAuthenticated()){

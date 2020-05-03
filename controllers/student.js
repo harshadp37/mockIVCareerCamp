@@ -1,5 +1,6 @@
 const Student = require('./../models/Student');
 
+// RETURN ALL STUDENTS AND THEIR DETAILS
 module.exports.showAllStudents = async (req, res)=>{
     try {
         if(!req.isAuthenticated()){
@@ -18,6 +19,7 @@ module.exports.showAllStudents = async (req, res)=>{
     }
 }
 
+// CREATE NEW STUDENT
 module.exports.createStudent = async (req, res)=>{
     try {
         if(!req.isAuthenticated()){

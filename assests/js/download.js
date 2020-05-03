@@ -1,3 +1,4 @@
+// GET JSON DATA TO CONVERT IN CSV FILE
 function getJSONData(){
     $('.info').text("Processing Request...Please wait");
     $("body").css('cursor', 'wait')
@@ -22,6 +23,7 @@ function getJSONData(){
     })
 }
 
+// SHOW DOWNLOAD LINK WHEN READY
 function download(data){
     const blob = new Blob([data], {type: 'text/csv'})
     const url = window.URL.createObjectURL(blob)
@@ -33,6 +35,7 @@ function download(data){
 
 }
 
+// CONVERT JSON DATA TO CSV
 function convertToCSV(students){
     let CSVData = [];
     let CSVHeaders = ["Student_ID", "Name", "Batch", "College", "Status", "DSA Score", "WebD Score", "React Score", "Company Name", "Interview Date", "Interview Result"];

@@ -2,6 +2,7 @@ const Interview = require('./../models/Interview');
 const Student = require('./../models/Student');
 const Result = require('../models/Result');
 
+// ADD RESULT STATUS OF AN INTERVIEW
 module.exports.addResultStatus = async (req, res)=>{
     try {
         if(!req.body.interviewID || !req.body.studentID || !req.body.resultStatus){
@@ -33,6 +34,7 @@ module.exports.addResultStatus = async (req, res)=>{
     }
 }
 
+// UPDATE RESULT STATUS OF AN INTERVIEW
 module.exports.updateResultStatus = async (req, res)=>{
     try {
         if(!req.body.resultID || !req.body.resultStatus){

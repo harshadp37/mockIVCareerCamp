@@ -6,11 +6,14 @@
         <button type="button" class="addInterviewBtn" onclick="showModal()">&#10010; Add New Interview</button>
     </div>
 
+    <!-- ERROR -->
     <% if(locals.interviewFetchingError){ %>
     <div class="interviewFetchingError">
         <span><%= locals.interviewFetchingError %></span>
     </div>
     <% }else { %>
+
+    <!-- UPCOMING INTERVIEWS -->
     <% if(locals.upcomingInterviews || locals.pastInterviews){ %>
     <div class="listOfInterviews">
         <div class="header">
@@ -36,6 +39,7 @@
         <% } %>
         <% } %>
 
+        <!-- PAST INTERVIEWS -->
         <% if(pastInterviews.length != 0){ %>
         <div class="header">
             <span>Past Interviews (<%= pastInterviews.length %>)</span>
