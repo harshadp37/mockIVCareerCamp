@@ -9,5 +9,6 @@ router.use('/employee', require('./employee'));
 router.use('/students', require('./student'));
 router.use('/interviews', require('./interview'));
 router.use('/results', require('./result'));
+router.use('/download', require('./download'));
 
 module.exports = router;
