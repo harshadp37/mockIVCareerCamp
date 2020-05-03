@@ -29,7 +29,8 @@
             <div class="content">
                 <h3><%= upcomingInterviews[i].company %></h3>
                 <p>Date : <%=(upcomingInterviews[i].date.getDate() < 10 ? '0' + upcomingInterviews[i].date.getDate() : upcomingInterviews[i].date.getDate()) + '-' + (upcomingInterviews[i].date.getMonth() + 1 < 10 ? '0' + (upcomingInterviews[i].date.getMonth() + 1) : upcomingInterviews[i].date.getMonth() + 1) + '-' + (upcomingInterviews[i].date.getFullYear()); %></p>
-                <button class="addStudentsForInterview" onclick="showInterviewStudentModal('<%= upcomingInterviews[i]._id %>', '<%= upcomingInterviews[i].company %>', '<%= upcomingInterviews[i].date %>')">Add Students</button>
+                <button onclick="showInterviewStudentModal('<%= upcomingInterviews[i]._id %>', '<%= upcomingInterviews[i].company %>')">Show Students</button>
+                <button onclick="showAddInterviewStudentModal('<%= upcomingInterviews[i]._id %>', '<%= upcomingInterviews[i].company %>')">Add Students</button>
             </div>
         </div>
         <% } %>
@@ -47,6 +48,7 @@
             <div class="content">
                 <h3><%= pastInterviews[i].company %></h3>
                 <p>Date : <%=(pastInterviews[i].date.getDate() < 10 ? '0' + pastInterviews[i].date.getDate() : pastInterviews[i].date.getDate()) + '-' + (pastInterviews[i].date.getMonth() + 1 < 10 ? '0' + (pastInterviews[i].date.getMonth() + 1) : pastInterviews[i].date.getMonth() + 1) + '-' + (pastInterviews[i].date.getFullYear()); %></p>
+            <button onclick="showInterviewResultModal('<%= pastInterviews[i]._id %>', '<%= pastInterviews[i].company %>')">Result Status</button>
             </div>
         </div>
         <% } %>
@@ -54,6 +56,19 @@
     </div>
     <% } %>
     <% } %>
+
+    <div class="modal interview-show-students-div">
+        <div class="header">
+            <span>Students List</span>
+            <span class="close" onclick="hideModal()">&#10006;</span>
+        </div>
+
+        <div class="body">
+            <!-- ERROR AND SUCCESS NOTIFICATION -->
+            <span style="margin-bottom: 10px;" class="company"></span>
+            <span class="error"></span>
+        </div>
+    </div>
 
     <div class="modal interview-add-students-div">
         <div class="header">
@@ -63,8 +78,21 @@
 
         <div class="body">
             <!-- ERROR AND SUCCESS NOTIFICATION -->
+            <span style="margin-bottom: 10px;" class="company"></span>
             <span class="error"></span>
-            <span class="company"></span>
+        </div>
+    </div>
+
+    <div class="modal interview-mark-result-div">
+        <div class="header">
+            <span>Mark Result Status</span>
+            <span class="close" onclick="hideModal()">&#10006;</span>
+        </div>
+
+        <div class="body">
+            <!-- ERROR AND SUCCESS NOTIFICATION -->
+            <span style="margin-bottom: 10px;" class="company"></span>
+            <span class="error"></span>
         </div>
     </div>
 

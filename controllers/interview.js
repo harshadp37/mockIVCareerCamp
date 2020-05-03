@@ -1,5 +1,6 @@
 const Interview = require('./../models/Interview');
 const Student = require('./../models/Student');
+const Result = require('../models/Result');
 
 module.exports.getAllInterviews = async (req, res)=>{
     try {
@@ -23,10 +24,10 @@ module.exports.getAllInterviews = async (req, res)=>{
             }
         });
 
-        upcomingInterviews.sort(compare);
-        pastInterviews.sort(compare);
+        upcomingInterviews.sort(compare1);
+        pastInterviews.sort(compare2);
 
-        function compare(a, b) {
+        function compare1(a, b) {
             // Use toUpperCase() to ignore character casing
             let comparison = 0;
             if (a.date > b.date) {
@@ -36,6 +37,17 @@ module.exports.getAllInterviews = async (req, res)=>{
             }
             return comparison;
           }
+
+          function compare2(a, b) {
+              // Use toUpperCase() to ignore character casing
+              let comparison = 0;
+              if (a.date > b.date) {
+                comparison = -1;
+              } else if (a.date < b.date) {
+                comparison = 1;
+              }
+              return comparison;
+            }
 
         return res.render('interview', {title: 'Interview', upcomingInterviews: upcomingInterviews, pastInterviews: pastInterviews})
     } catch (e) {
@@ -76,16 +88,20 @@ module.exports.getAllocatedStudents = async (req, res)=>{
         if(!req.isAuthenticated()){
             res.redirect('/')
         }
-        let students = await Student.find({}).sort('batch');
+        let interview = await Interview.findById(req.params.id).populate({path: 'students', populate: {path: 'results', match: {interview: req.params.id}}, options: {sort: 'batch'}});
 
-        if(students.length == 0){
+        if(!interview){
+            return res.json({success: false, message: 'Something went wrong.'})
+        }
+        
+        if(interview.students.length == 0){
             return res.json({success: false, message: 'No Students.'})
         }
         
-        return res.json({success: true, students: students});
+        return res.json({success: true, students: interview.students});
     } catch (e) {
-        console.log('Error while getting All Students.')
-        res.json({success: false, message: 'Error while getting all Students.'});
+        console.log('Error while getting Allocated Students. ' + e)
+        res.json({success: false, message: 'Error while getting Allocated Students.'});
     }
 }
 
@@ -108,8 +124,8 @@ module.exports.getRemainingStudents = async (req, res)=>{
         
         return res.json({success: true, students: students});
     } catch (e) {
-        console.log('Error while getting All Students.')
-        res.json({success: false, message: 'Error while getting all Students.'});
+        console.log('Error while getting Not Allocated Students.')
+        res.json({success: false, message: 'Error while getting Not Allocated Students.'});
     }
 }
 
