@@ -1,0 +1,92 @@
+<script type="text/javascript" src="/js/interview.js"></script>
+<link rel='stylesheet' type='text/css' href='/css/interview.css'>
+
+<div class="interviewDiv">
+    <div class="interviewHeader">
+        <button type="button" class="addInterviewBtn" onclick="showModal()">&#10010; Add New Interview</button>
+    </div>
+
+    <% if(locals.interviewFetchingError){ %>
+    <div class="interviewFetchingError">
+        <span><%= locals.interviewFetchingError %></span>
+    </div>
+    <% }else { %>
+    <% if(locals.upcomingInterviews || locals.pastInterviews){ %>
+    <div class="listOfInterviews">
+        <div class="header">
+            <span>Upcoming Interviews (<%= upcomingInterviews.length %>)</span>
+        </div>
+        <% if(upcomingInterviews.length == 0){ %>
+        <div>
+            <span>No Upcoming Interviews.</span>
+        </div>
+        <% }else{%>
+        <% for(let i=0; i<upcomingInterviews.length; i++){ %>
+        <div class="eachInterview">
+            <div class="number">
+                <span><%= (i+1) %>.</span>
+            </div>
+            <div class="content">
+                <h3><%= upcomingInterviews[i].company %></h3>
+                <p>Date : <%=(upcomingInterviews[i].date.getDate() < 10 ? '0' + upcomingInterviews[i].date.getDate() : upcomingInterviews[i].date.getDate()) + '-' + (upcomingInterviews[i].date.getMonth() + 1 < 10 ? '0' + (upcomingInterviews[i].date.getMonth() + 1) : upcomingInterviews[i].date.getMonth() + 1) + '-' + (upcomingInterviews[i].date.getFullYear()); %></p>
+                <button class="addStudentsForInterview" onclick="showInterviewStudentModal('<%= upcomingInterviews[i]._id %>', '<%= upcomingInterviews[i].company %>', '<%= upcomingInterviews[i].date %>')">Add Students</button>
+            </div>
+        </div>
+        <% } %>
+        <% } %>
+
+        <% if(pastInterviews.length != 0){ %>
+        <div class="header">
+            <span>Past Interviews (<%= pastInterviews.length %>)</span>
+        </div>
+        <% for(let i=0; i<pastInterviews.length; i++){ %>
+        <div class="eachInterview">
+            <div class="number">
+                <span><%= (i+1) %>.</span>
+            </div>
+            <div class="content">
+                <h3><%= pastInterviews[i].company %></h3>
+                <p>Date : <%=(pastInterviews[i].date.getDate() < 10 ? '0' + pastInterviews[i].date.getDate() : pastInterviews[i].date.getDate()) + '-' + (pastInterviews[i].date.getMonth() + 1 < 10 ? '0' + (pastInterviews[i].date.getMonth() + 1) : pastInterviews[i].date.getMonth() + 1) + '-' + (pastInterviews[i].date.getFullYear()); %></p>
+            </div>
+        </div>
+        <% } %>
+        <% } %>
+    </div>
+    <% } %>
+    <% } %>
+
+    <div class="modal interview-add-students-div">
+        <div class="header">
+            <span>Add Students</span>
+            <span class="close" onclick="hideModal()">&#10006;</span>
+        </div>
+
+        <div class="body">
+            <!-- ERROR AND SUCCESS NOTIFICATION -->
+            <span class="error"></span>
+            <span class="company"></span>
+        </div>
+    </div>
+
+    <div class="modal add-interview-div">
+        <div class="header">
+            <span>Add Interview</span>
+            <span class="close" onclick="hideModal()">&#10006;</span>
+        </div>
+
+        <div class="body">
+            <!-- ERROR AND SUCCESS NOTIFICATION -->
+            <span class="error"></span>
+            <span class="success"></span>
+
+            <!-- ADD INTERVIEW FORM -->
+            <form class="add-interview-form" method="POST" action="/interviews/add">
+                <input type="text" id="company" name="company" placeholder="Enter Company Name..." required />
+
+                <input type="date" id="date" name="date" placeholder="Select Date" required />
+
+                <button type="submit" class="addInterviewBtn">Add Interview</button>
+            </form>
+        </div>
+    </div>
+</div>

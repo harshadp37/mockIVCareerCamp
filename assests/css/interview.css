@@ -1,15 +1,15 @@
-.studentDiv{
+.interviewDiv{
     position: relative;
 }
 
-.studentHeader{
+.interviewHeader{
     width: 100%;
     display: flex;
     flex-direction: row;
     justify-content: flex-end;
 }
 
-.studentHeader .addStudentBtn{
+.interviewHeader .addInterviewBtn{
     padding: 8px 10px;
     border: none;
     outline: none;
@@ -22,7 +22,7 @@
     cursor: pointer;
 }
 
-.studentFetchingError{
+.interviewFetchingError{
     width: 100%;
     color: #910d0d;
     text-align: center;
@@ -31,27 +31,27 @@
     font-weight: 600;
 }
 
-.listOfStudents{
+.listOfInterviews{
     width: 100%;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
 }
 
-.listOfStudents .batchHeader{
+.listOfInterviews .header{
     width: 100%;
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
     background: #f1b970;
-    text-transform: uppercase;
+    text-transform: capitalize;
     margin: 20px 0 0 0;
     padding: 10px 0;
     font-size: 1.3rem;
 }
 
-.listOfStudents .eachStudent{
+.listOfInterviews .eachInterview{
     width: 100%;
     display: flex;
     flex-direction: row;
@@ -63,7 +63,7 @@
     overflow: hidden;
 }
 
-.listOfStudents .eachStudent .number{
+.listOfInterviews .eachInterview .number{
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -72,40 +72,36 @@
     font-weight: 700;
 }
 
-.listOfStudents .eachStudent .content{
+.listOfInterviews .eachInterview .content{
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: flex-start;
 }
 
-.listOfStudents .eachStudent .content h3{
+.listOfInterviews .eachInterview .content h3{
     margin: 0 0 10px 0;
     font-size: 1.2rem;
 }
 
-.listOfStudents .eachStudent .content p{
-    margin: 0 0 5px 0;
+.listOfInterviews .eachInterview .content p{
+    margin: 0 0 10px 0;
     font-size: 0.95rem;
 }
 
-.listOfStudents .eachStudent .content .status{
-    width: 170px;
-    height: 170px;
-    display: flex;
-    justify-content: center;
-    align-items: flex-end;
-    position: absolute;
-    top: 0;
-    right: 0;
-    transform: rotate(45deg);
-    transform-origin: 145% 90%;
-    background: #24c224;
+.listOfInterviews .eachInterview .content button{
+    padding: 5px 8px;
+    border: none;
+    outline: none;
+    margin-bottom: 5px;
     font-size: 1.1rem;
-    font-weight: 600;
+    border-radius: 5px;
+    cursor: pointer;
+    background: #62eff0;
+    color: black;
+    cursor: pointer;
 }
 
-.add-student-div{
+.add-interview-div{
     width: 50%;
     position: absolute;
     top: 0;
@@ -114,7 +110,7 @@
     display: none;
 }
 
-.add-student-div .header{
+.add-interview-div .header{
     width: 100%;
     font-size: 1.5rem;
     text-align: center;
@@ -126,7 +122,7 @@
     position: relative;
 }
 
-.add-student-div .header .close{
+.close{
     font-size: 1.2rem;
     color: red;
     position: absolute;
@@ -135,11 +131,11 @@
     cursor: pointer;
 }
 
-.add-student-div .header .close:hover{
+.close:hover{
     color: #ff5050;
 }
 
-.add-student-div .body{
+.add-interview-div .body{
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -152,7 +148,7 @@
     border-bottom-right-radius: 10px;
 }
 
-.add-student-div .body .error{
+.add-interview-div .body .error{
     width: 80%;
     color: #910d0d;
     font-size: 1rem;
@@ -160,7 +156,7 @@
     font-weight: 600;
 }
 
-.add-student-div .body .success{
+.add-interview-div .body .success{
     width: 80%;
     color: lime;
     font-size: 1rem;
@@ -168,7 +164,7 @@
     font-weight: 600;
 }
 
-.add-student-div .body form{
+.add-interview-div .body form{
     width: 60%;
     display: flex;
     flex-direction: column;
@@ -179,7 +175,7 @@
     font-size: 1.2rem;
 }
 
-.add-student-div .body form input, .add-student-div .body form select{
+.add-interview-div .body form input, .add-interview-div .body form select{
     width: 100%;
     padding: 8px 10px;
     border: none;
@@ -192,17 +188,17 @@
     transition: all 0.5s;
 }
 
-.add-student-div .body form input::placeholder{
+.add-interview-div .body form input::placeholder{
     font-size: 0.9rem;
     color: black;
 }
 
-.add-student-div .body form input:focus{
+.add-interview-div .body form input:focus{
     border-bottom: 2px solid orange;
     color: white;
 }
 
-.add-student-div .body form .addStudentBtn{
+.add-interview-div .body form .addInterviewBtn{
     padding: 8px 10px;
     border: none;
     outline: none;
@@ -215,27 +211,93 @@
     cursor: pointer;
 }
 
-.add-student-div .body form .addStudentBtn:hover{
+.add-interview-div .body form .addInterviewBtn:hover{
     background: #83b615;
     color: black;
 }
 
-@media(min-width: 800px){
-    .listOfStudents .eachStudent{
+.interview-add-students-div{
+    width: 50%;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    display: none;
+}
+
+.interview-add-students-div .header{
+    width: 100%;
+    font-size: 1.5rem;
+    text-align: center;
+    padding: 10px 0;
+    background: #1a1b27;
+    color: white;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    position: relative;
+}
+
+.interview-add-students-div .body{
+    width: 100%;
+    max-height: 700px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    font-size: 1.2rem;
+    background: #645fa0;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+.interview-add-students-div .error{
+    width: 80%;
+    color: #910d0d;
+    font-size: 1rem;
+    padding-top: 5px;
+    font-weight: 600;
+}
+
+.interview-add-students-div .body table{
+    width: 100%;
+    padding: 35px 0;
+    text-align: center;
+    font-size: 1.2rem;
+}
+
+.interview-add-students-div .body table td{
+    padding: 8px;
+}
+
+.interview-add-students-div .body table td button{
+    padding: 8px 10px;
+    border: none;
+    outline: none;
+    font-size: 1.1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    background: #dec70f;
+    color: black;
+    cursor: pointer;
+}
+
+@media(min-width: 650px){
+    .listOfInterviews .eachInterview{
         width: 48%;
         margin: 0 1% 1% 0;
     }
 }
 
 @media(min-width: 1100px){
-    .listOfStudents .eachStudent{
+    .listOfInterviews .eachInterview{
         width: 32%;
         margin: 0 1% 1% 0;
     }
 }
 
 @media(min-width: 1400px){
-    .listOfStudents .eachStudent{
+    .listOfInterviews .eachInterview{
         width: 24%;
         margin: 0 1% 1% 0;
     }
