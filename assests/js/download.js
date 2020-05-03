@@ -35,13 +35,14 @@ function download(data){
 
 function convertToCSV(students){
     let CSVData = [];
-    let CSVHeaders = ["Student_ID", "Name", "College", "Status", "DSA Score", "WebD Score", "React Score", "Company Name", "Interview Date", "Interview Result"];
+    let CSVHeaders = ["Student_ID", "Name", "Batch", "College", "Status", "DSA Score", "WebD Score", "React Score", "Company Name", "Interview Date", "Interview Result"];
     CSVData.push(CSVHeaders.join(','));
 
     for(let i=0, interviewIndex = 0; i<students.length; ){
         let CSVRow = [];
         CSVRow.push(students[i]._id);
         CSVRow.push(students[i].name);
+        CSVRow.push(students[i].batch);
         CSVRow.push(students[i].college);
         CSVRow.push(students[i].status);
         CSVRow.push(students[i].course.DSA);

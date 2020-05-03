@@ -14,8 +14,8 @@ module.exports.getData = async (req, res) => {
         if (!req.isAuthenticated()) {
             return res.redirect('/')
         }
-        let students = await Student.find({}).populate({path: 'interviews'}).populate({path: 'results'})
-        console.log(students)
+        let students = await Student.find({}).populate({path: 'interviews'}).populate({path: 'results'}).sort('batch')
+        
         res.json({success: true, students: students});
     } catch (e) {
         console.log('Error while Downloading data' + e);
